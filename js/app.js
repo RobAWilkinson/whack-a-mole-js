@@ -11,7 +11,7 @@ function assignMole() {
 	circle.hasMole = true;
 }
 
-setInterval(assignMole,1000);
+var moleInterval = setInterval(assignMole,1000);
 
 // if player clicks on that mole he faints and player gains a point
 	for(var i = 0; i < circles.length; i++) {
@@ -26,6 +26,8 @@ setInterval(assignMole,1000);
 				this.style.backgroundColor = "burlywood";
 			}
 			document.getElementById('points').innerHTML = player.points;
+			window.clearInterval(moleInterval);
+			moleInterval = setInterval(assignMole, 1000 - (player.points *10))
 		});
 	}
 
